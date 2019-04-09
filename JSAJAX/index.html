@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //原生请求数据的过程
+    var xhr = null
+    if(window.XMLHttpRequest){
+      xhr = new XMLHttpRequest()
+    }else{
+      xhr = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+  //XMLHttpRequest()方法是浏览器引入的,只要遵循HTTP协议就会有的方法
+    xhr.open("get","./mock.json",true)   //false设置为同步操作
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+    xhr.send()
+    // console.log(xhr.responseText)
+    // console.log(xhr.readyState,xhr.status)
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4 && xhr.status == 200){
+        console.log(xhr.responseText)
+      }
+    }
+    // 需要较长时间执行的代码，就会产生异步，es6之前解决异步把代码写在回调函数内，但是会产生回调地狱
+    </script>
+</body>
+</html>
