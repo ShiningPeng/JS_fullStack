@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //父类
+  function Animal(age){
+    // console.log(arguments,'+++');
+    this.species = '动物';
+    this.age = age;
+  }
+  function Car(age,name, color){
+    // console.log(arguments);
+    // Animal.apply(this,arguments);//实现子类继承父类上的属性,使运行时父类和子类指向同一个对象
+    Animal.call(this,age,name,color);
+    this.name = name;
+    this.color = color;
+  }
+  var cat1 = new Car(3,'加菲猫','yellow');
+  console.log(cat1.age);
+  </script>
+</body>
+</html>
