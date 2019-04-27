@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+   
+    "van-button": "../../vant/vant/button/index"
+  },
+  "enablePullDownRefresh":true,
+  "OnReachBottomDistance":100
+}
