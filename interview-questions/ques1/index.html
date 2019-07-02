@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //全局作用域下，this指向window
+    //在js中 new 是如何起作用的（new方法的原理）
+    // 因为在js中new已经被封装好了
+    function _new() {
+      // 1.创建一个对象，构造函数中this指向这个对象
+      // 2.给这个对象赋值一个构造函数的原型链
+      let target = { }
+      //1. 定义了两个参数，第一个参数是构造函数，第二个是args
+      let [constructor,...args] = [...arguments];//es6语法
+      // 3.让自己创建的新对象连接一个原型链(执行【原型】连接)
+      // target就会变成constructor的实例
+      target.__proto__ = constructor.prototype
+      // 4.执行构造函数，将构造函数的属性或方法添加到创建的对象上
+      let result = constructor.apply(target, args)//需要两个参数
+      if(result && (typeof result === 'object') || typeof result === 'function'){
+        //如果构造函数执行的结果是一个对象，我们就直接返回这个对象
+        return result;
+      }
+        //如果构造函数执行的结果不是一个对象，我们就返回创建的新对象
+          return target;
+    }  
+  </script>
+</body>
+
+</html>
