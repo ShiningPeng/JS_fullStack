@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //['1','2','3'].map(parseInt)
+    //[1, NaN, NaN]
+    ['1','2','3'].map(callback);
+    var str = '123';
+    parseInt('1',0);
+    parseInt('2',1);
+    parseInt('3',2);
+    var number = parseInt(str);//123
+
+    var get = new Promise((resolve, reject) => {
+      resolve(666);
+    }, 3000)
+    //.then里面都是回调函数
+    // get.then(res => {
+    //   console.log(res);
+    // })
+
+    // get.then(console.log)
+    // get.then(callback);//与下方等效
+    // get.then((a, b, c) => {
+    //   console.log(a, b, c);
+    // })
+    
+    function callback(a, b, c) {
+      console.log(a, b, c);
+    }
+  </script>
+</body>
+
+</html>
