@@ -20,7 +20,8 @@ function quickSort(arr) {
   // left a
   // base 中间值
   // right b
+  console.log(left, right);
   return quickSort(left).concat([base], quickSort(right));
 }
-var arr =[1,2,65,48,31,9,-4];
-console.log(quickSort(arr));
+var arr = [1, 7, 3, 5, 2, 9];
+console.log('最后排序结果', quickSort(arr));
