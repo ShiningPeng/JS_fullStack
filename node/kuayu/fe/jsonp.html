@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonp</title>
+</head>
+<body>
+  <div>
+    这是jsonp页面
+  </div>
+  <!-- cdn.con:a.js上的资源 -->
+  <script>
+    // function callback(res) {
+    //   console.log('jsonp返回结果',res);
+    // }
+  </script>
+  <!-- <script src="http://localhost:9999/api/jsonp?callback=callback"></script> -->
+  <!-- src拿到的结果用js来执行 -->
+  <script>
+    // callback({"name":"name1", "age":18})
+    const jsonp = function (url) {//callback后面取值取啥需要和后端协调好
+      return new Promise((resolve, reject) => {
+        const callbackName = 'callback';
+        window[callbackName] = function(res){
+          //取值的地方
+          resolve(res);
+        }
+        const scriptNode = document.createElement('script');
+        scriptNode.src = url.indexOf('?') === -1 ? `${url}?callback=${callbackName}` : `${url}&callback=${callbackName}`;
+        scriptNode.addEventListener('error',function(){
+          delete window[callbackName];
+          document.body.removeChild(scriptNode);
+          reject('js 加载失败');
+        })
+        document.body.appendChild(scriptNode);
+      })
+    }
+    jsonp('http://localhost:9999/api/jsonp')
+    .then(res => {
+      console.log(res);
+    })
+  </script>
+</body>
+</html>
