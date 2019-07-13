@@ -137,7 +137,7 @@ h3 {
 #mainbody .very.relaxed .container .maincontent .thumbnails li {
   float: left;
   margin-bottom: 30px;
-  margin-left: $jl30;
+  margin-left: -30px;
 }
 #mainbody .very.relaxed .container .maincontent .thumbnails .span4 {
   width: 370px;

@@ -17,10 +17,10 @@ http.createServer((req, res) => {
     req.on('end', () => {
       res.end(data);
     })
-    // res.writeHead(200, {
-    //   "Content-type": "application/json"
-    // })
-    // res.end(JSON.stringify(userLists));
+    res.writeHead(200, {
+      "Content-type": "application/json"
+    })
+    res.end(JSON.stringify(userLists));
   } else {
 
     res.end('请求方式不对');
