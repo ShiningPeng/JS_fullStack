@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //generate函数有个*号在function和函数名之间
+    function foo() {
+      // console.log(145);
+      return 122;
+    }
+    function* test() {
+      console.log(1);
+      let a = yield foo();
+      console.log('a', a);
+      let b = yield 2;
+      console.log('b', b);
+      let c = yield 3;
+      console.log('c', c);
+    }
+    // var g = test();
+    // let gn = g.next();
+    //它是惰性的，test()无法调用，只是生成一个 对象，{ next }
+    //调用next属性 一步一步执行,返回值还是一个对象，value和done属性，done为false时可以继续执行(就是说还有yield)，yield后要有返回值，否则为undefined，或者说yield本身不会返回任何东西。调用.next()中传的参会作为上一个yield的返回值
+    // g.next()
+    // g.next()
+    // g.next()
+
+    //让generate函数自己全部执行完
+    // while(!gn.done){
+    //   gn = g.next(gn.value);
+    //   // console.log(gn);
+    // }
+
+    function* test1() {
+      let a = yield true;
+      console.log('a', a);
+      let b = yield 100;
+      console.log('b', b);
+    }
+    function autoRun(generateFun) {
+      let g = generateFun();
+      let gn = g.next();
+      while (!gn.done) {
+        gn = g.next(gn.value);
+      }
+    }
+    // autoRun1(test);
+    // autoRun1(test1);
+
+    // function autoRun1(generateFun) {
+    //   let g = generateFun();
+    //   // let gn = g.next();
+    //   function next(data) {
+    //     var result = g.next(data);
+    //     if (result.done) return;
+    //     next(result.value);
+    //   }
+    //   next();
+    // }
+
+    // (async function(){
+    //   let a = await fooPromise();
+    //   let b = await barPromise();
+    //   console.log(1);
+    // })()
+    let fooPromise = function () {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('fooPromise')
+        }, 1000);
+      })
+    }
+    let barPromise = function () {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('barPromise')
+        }, 2000);
+      })
+    }
+    _asyncToGenerator(
+      function* () {
+        let a = yield fooPromise();
+        console.log('_asyncToGenerator a', a);
+        let c = yield barPromise();
+        console.log('_asyncToGenerator c', c);
+        let b = yield 2;
+        console.log('_asyncToGenerator b', b);
+      }
+    )
+    // 第一步
+    // fooPromise().then(()=>{
+    //   let b = yield 2;
+    // })
+    function _asyncToGenerator(generateFun) {
+      return new Promise((resolve, reject) => {
+        let gen = generateFun();
+        //key === next
+        function step(key, arg) {
+          let info = {};
+          //info = {value, done}
+          info = gen[key](arg);
+          if (info.done) { resolve() }
+          else {
+            return Promise.resolve(info.value)
+              .then((v) => {
+                return step('next', v);
+              })
+          }
+        };
+        step('next');
+      })
+    }
+  </script>
+</body>
+
+</html>
