@@ -15,8 +15,8 @@ export default {
   methods: {
     goTwo() {
       // this.$router.push('/look/look-two')
-      // this.$router.push({ path: '/look/look-two'})
-      this.$router.push({name:'LookTwo',param:{ id: 12345}})
+      this.$router.push({ path: '/look/look-two'})
+      // this.$router.push({name:'LookTwo',param:{ id: 12345}})
     }
   },
   beforeRouteEnter (to, from, next) {

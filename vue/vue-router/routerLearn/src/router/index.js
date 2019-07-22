@@ -5,9 +5,6 @@ import Look from '@/components/Look'
 import LookOne from '@/components/LookOne'
 import LookTwo from '@/components/LookTwo'
 
-
-
-
 Vue.use(Router)
 
 export default new Router({

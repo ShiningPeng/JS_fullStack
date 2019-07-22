@@ -8,9 +8,6 @@
       <router-link to="/look/look-one">look1</router-link>
       <router-link to="/look/look-two">look2</router-link>
       <router-link to="/go-back">重定向</router-link>
-
-
-
     </p>
     <router-view/>
   </div>
