@@ -55,6 +55,7 @@ const getOneData = function () {
       })
   })
 }
+getOneData();
 Promise.all()
 getWeatherTpis().then(tip => {
   console.log(tip);
