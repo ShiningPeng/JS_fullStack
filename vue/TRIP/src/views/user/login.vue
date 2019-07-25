@@ -42,7 +42,9 @@ export default {
     }
   },
   methods: {
-    loginOnClick () {}
+    loginOnClick () {
+      
+    }
   }
 }
 </script>
