@@ -15,5 +15,44 @@ var pool = mysql.createPool({
 })
 
 //开始请求
+router.post('/',function(req, res, next) {
+  // req是前端发过来的请求带的参数
+  let userName = req.body.userName;
+  let password = req.body.passWord;
+  //从数据库查找数据，最后返回给前端
+  pool.query(`SELECT * FROM user where userName = ${userName}`,function(err, results, fields){
+    if(err){
+      data.code = 500;
+      data.msg = err
+    }
+    if(results[0].passWord === password){
+      selectUser(results[0].userId)
+    }else{
+      data.code = 400;
+      data.msg = '账号或密码有误！';
+      res.statusCode = 200;
+      res.setHeader('Access-Control-Allow-Origin','*');
+      res.setHeader('Content-type','application/json');
+      res.json(data);
+    }
+  })
+
+  function selectUser(id) {
+    pool.query(`SELECT * FROM user_info where userId = ${id}`, function(err, results, fields) {
+      if(err){
+        data.code = 500;
+        data.msg = err;
+      }
+      data.code = 200;
+      data.msg=  'success';
+      data.data = results[0];
+      res.statusCode = 200;
+      res.setHeader('Access-Control-Allow-Origin','*');
+      res.setHeader('Content-type','application/json');
+      res.json(data);
+    })
+  }
+})
+
 
 module.exports = router;
