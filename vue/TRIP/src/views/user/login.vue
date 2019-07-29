@@ -31,6 +31,8 @@
 </template>
 
 <script>
+// import Toast from '../../../../../jiujiu/miniprogram/pages/dist/toast/toast';
+import { Toast } from 'mand-mobile'
 export default {
   name: 'Login',
   data () {
@@ -38,12 +40,25 @@ export default {
       user: {
         name: '15330734121',
         password: '12345'
-      }
+      },
+      userData:null
     }
   },
   methods: {
     loginOnClick () {
-      
+      this.loginAjax()
+    },
+    loginAjax(){
+      let params = {
+        userName:this.user.name,
+        passWord:this.user.password
+      };
+      this.$http.post('/user', params).then(res => {
+        this.userData = res.data.data;
+        let tmpUser  = JSON.stringify(this.userData); 
+        //存到vuex里面
+          Toast.succeed(`欢迎回来${this.userData.name}`,1500);
+      })
     }
   }
 }
