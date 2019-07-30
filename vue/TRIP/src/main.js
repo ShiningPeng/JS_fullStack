@@ -6,16 +6,22 @@ import router from './router'
 import 'mand-mobile/lib/mand-mobile.css'
 import mandMobile from 'mand-mobile'
 import store from './store/index';
+import AMap from 'vue-amap';
 
 
 // import axios from 'axios';
 // Vue.prototype.$http = axios;
+Vue.use(AMap);
 
 Vue.use(mandMobile)
 import requestPlugin from './request/http.js';
 Vue.use(requestPlugin);
 Vue.config.productionTip = false
 
+AMap.initAMapApiLoader({
+  //高德地图的key值
+  
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
