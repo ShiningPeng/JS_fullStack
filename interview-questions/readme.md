@@ -86,10 +86,26 @@ scrollTop:滚动后被隐藏的高度
   initial-scale=no,300ms自动消失，不存在延迟
 2. FastClick,其原理是：监测到touchend事件后，立刻发出模拟click事件，并把浏览器300ms之后真实发出的事件阻断
 
-##  Cookie, sessionStorage, localStorage的区别
+## 17 Cookie, sessionStorage, localStorage的区别
 Cookie: 数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器之间来回传递，又要有接口请求，cookie就会自己上车。而sessionStorage 和 localStorage 不会自动把数据发给服务器，仅在本地保存。cookie还有路径(path)的概念，可以限制cookie只属于某个路径下，这里就是cookie会自己上车，但是指明上哪辆车，存储大小只有4k左右。
 
 sessionStorage：仅在当前浏览器窗口关闭前有效，不能长久保存。
 
 localStorage: 在所有的同源窗口都是共享的，cookie也是在所有同源窗口中共享的，localStorage的存储大小在5M左右
 token放在cookie中在http请求可以每次自动返回给后端
+
+##ques18 任务列表(event loop)
+  marcotask(宏观任务)：
+    setTimeout
+    setInterval
+    requestAnimationFrame
+    HTML的解析
+    js的主线程
+    页面加载
+    用户交互
+  microtask(微观任务)
+    promise
+    mutation.oberver
+    process.nextTick(node中自带的一个异步的方法)
+
+script(主程序代码)执行的权重  >  process.nextTick   >   promise   >  setTimeout  >  setInterval  >  setImmediate  >  I/O  >  UI rendering
