@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+  <div class="box">7</div>
+  <div class="box">8</div>
+  <div class="box">9</div>
+  <div class="box">10</div>
+  <script>
+    // let a = 1;
+    // {
+    //   let b = 2;
+    // }  
+    // console.log(b);  //报错 b is not defined
+
+    //闭包
+    // const boxes = document.getElementsByClassName('box');
+    // for (let i = 0; i < boxes.length; i++) {
+    //   boxes[i].onclick = function () {
+    //     alert(i + 1);
+    //   }
+    // }
+    // const和let有块级作用域，不会挂载到window对象下面,而且两者都不支持变量提升
+
+    console.log(fn);    //变量提升
+    console.log(window.fn);
+    let fn = 1;
+    // var fn = function() {
+
+    // }
+
+  </script>
+</body>
+
+</html>
