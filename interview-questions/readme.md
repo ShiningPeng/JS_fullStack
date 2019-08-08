@@ -109,3 +109,16 @@ token放在cookie中在http请求可以每次自动返回给后端
     process.nextTick(node中自带的一个异步的方法)
 
 script(主程序代码)执行的权重  >  process.nextTick   >   promise   >  setTimeout  >  setInterval  >  setImmediate  >  I/O  >  UI rendering
+
+##ques19 浏览器的重绘和回流
+  浏览器渲染页面的过程
+    1. 解析HTML，生成DOM树，解析CSS，生成CSSOM树
+    2. 将DOM树和CSSOM树结合生成 Render Tree 渲染树
+    3. 回流：根据生成的render树，进行回流，是为了得到节点的几何信息
+    4. 重绘：根据render树和回流得到的信息，得到节点的绝对像素
+    5. 将像素发给GPU，展示在页面上。
+
+#原生js操作dom树比任何框架都快
+
+##ques21 vue中为什么子组件不能修改父组件传过来的props中的数据
+  为了保证数据的单向流动，便于数据的追踪，避免数据的混乱
