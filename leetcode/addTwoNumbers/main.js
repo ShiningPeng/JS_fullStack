@@ -9,7 +9,6 @@ function addTwoNumbers(l1, l2) {
 
 }
 
-console.log(addTwoNumbers(a1,b1));
 
 // 529
 let a1 = new LinkedNode(5);
@@ -20,12 +19,13 @@ a1.next = a2;
 a2.next = a3;
 
 let b1 = new LinkedNode(9)
-let b1 = new LinkedNode(3)
+let b2 = new LinkedNode(3)
 b1.next = b2;
 
 
 let node = a1;
 while (node) {
-  console.log(node.val);
+  // console.log(node.val);
   node = node.next;
 }
+// console.log(addTwoNumbers(a1,b1));
