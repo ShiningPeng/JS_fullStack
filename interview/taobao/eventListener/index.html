@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="items">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <a href="javascript:;" id="addBtn">Add One</a>
+  <script>
+    // const items = document.getElementsByTagName('li')  // --aaa 两者对应
+    // const items = document.querySelectorAll('.items li')
+    const ul = document.querySelector('.items')
+    // for (let i = 0; i < items.length; i++) {
+    //   items[i].addEventListener('click', function() {
+    //     alert(this.innerText)
+    //   })
+    // }
+    ul.addEventListener('click', function (event) {
+      alert(event.target.innerText)
+    })
+    document.getElementById('addBtn')
+      .addEventListener('click', function () {
+        const oLi = document.createElement('li')
+        // 找出子节点的数量 
+        // ul.childNodes.filter 是一个伪数组
+        oLi.innerText = Array.from(ul.childNodes).filter(item => item.nodeType === 1 && item.tagName === 'LI').length + 1
+        // oLi.innerText = items.length + 1    // --aaa
+        document.querySelector('.items').appendChild(oLi)
+      })
+  </script>
+</body>
+</html>
