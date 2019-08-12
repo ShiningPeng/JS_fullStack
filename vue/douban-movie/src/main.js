@@ -5,8 +5,13 @@ import App from './App'
 import router from './router'
 import globalComponents from './common/js/components'
 import './common/styles/reset.styl';
+import VueLazyload from 'vue-lazyload';
+
 Vue.config.productionTip = false
 Vue.use(globalComponents);
+Vue.use(VueLazyload, {
+  loading:require('./common/images/loading.png')
+});
 
 /* eslint-disable no-new */
 new Vue({
