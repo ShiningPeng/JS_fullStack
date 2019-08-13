@@ -3,9 +3,9 @@
     <!-- 头部tab切换 -->
     <TheHeader></TheHeader>
     <div class="content">
-      <keep-alive>
+      <!-- <keep-alive> -->
         <router-view/>
-      </keep-alive>
+      <!-- </keep-alive> -->
     </div>
   </div>
 </template>
