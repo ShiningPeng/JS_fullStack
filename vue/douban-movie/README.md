@@ -26,7 +26,7 @@ Vue.use(VueLazyload, {
 4.axios的简单封装
 一般是做响应拦截和请求拦截
 
-5.Recommend和ListBlock页面通信
+5. Recommend和ListBlock页面通信
 Recommend.vue
 <ListBlock 
 :movies="playingMovies"
@@ -60,7 +60,7 @@ props: {
     }
   },
 
-6.tab切换的底杠，字体
+6. tab切换的底杠，字体
 router-link包裹的页面切换选中时会有router-link-active类名
 在此类名下加样式
 font-weight:700;
@@ -68,10 +68,14 @@ color:#fff !important
 border-bottom:3px solid #fff;
 即可
 
-7.@click="$router.back()"返回上一个页面
+7. @click="$router.back()"返回上一个页面
 用于页面之间的跳转
-8.this.$router.push(`/movie/${id}`);
+8. this.$router.push(`/movie/${id}`);
 在其他页面接收到传过来的id
 const {id} = this.$route.params
 并且在配置路由的时候需要
 path:'/movie/:id'
+
+9. vue项目中视频插件
+dplay
+安装：npm install dplay -S
