@@ -2,7 +2,10 @@
   <view class="group" wx:for-item="group" wx:for="{{ articleList}}">
     {{ group.date }}
     <view class="group-content">
-      <view class="group-content-item" wx:for="{{group.articles}}">{{item.title}}</view>
+      <view class="group-content-item {{item.hasVisited ? 'visited' : ''}}" wx:for="{{group.articles}}" bind:tap="showDetail" data-contentid="{{item.contentId}}">
+        <view class="group-content-item-desc">{{item.title}}</view>
+        <image class="group-content-item-img" src="{{item.cover}}"></image>
+      </view>
     </view>
   </view>
 </view>
