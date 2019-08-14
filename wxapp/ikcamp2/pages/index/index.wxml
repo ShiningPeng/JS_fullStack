@@ -1,0 +1,8 @@
+<view class="wrapper">
+  <view class="group" wx:for-item="group" wx:for="{{ articleList}}">
+    {{ group.date }}
+    <view class="group-content">
+      <view class="group-content-item" wx:for="{{group.articles}}">{{item.title}}</view>
+    </view>
+  </view>
+</view>
