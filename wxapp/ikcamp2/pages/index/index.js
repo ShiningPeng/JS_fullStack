@@ -57,12 +57,12 @@ Page({
   showDetail(e) {
     // console.log(e);
     const contentId = e.currentTarget.dataset.contentid;
-    console.log(contentId);
+    // console.log(contentId);
     let visitedID = wx.getStorageSync('visitedID') 
     || [];
     // 1
     // 1
-    // 1 includes find findIndex
+    // 1 用来判断数组中是否存在某个元素 includes find findIndex
     if (!visitedID.includes(contentId)) {
       visitedID.push(contentId);
     }

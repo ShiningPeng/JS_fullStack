@@ -22,4 +22,27 @@
   wx.request({content-type}, abc)  //b页面
   在请求时其页面都要加上content-type这个字段
   2. 请求字段统一处理
+
+
+##两个页面之间传递数据
+
+放在app.js的globalData中
+storage 
+通过页面url /detail/index?id=xxx
+
+订阅发布者模式
+  A：触发一个事件（发布者）
+  B：监听该事件（订阅者）
+
+##e.target vs e.currentTarget
+  e.target :触发事件的目标元素（点击了谁谁就是e.target）
+  e.currentTarget ：绑定事件元素（谁绑定了这个事件谁就是e.currentTarget）
+
+## js
+1. ECMAScript :规定了 Js 的语法
+2. DOM ：文档对象模型
+3. BOM ：浏览器对象模型
+      和浏览器相关的  history 窗口的resize  ...
+
+
   
