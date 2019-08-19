@@ -2,12 +2,12 @@
   <div class="search">
     <ScrollView :data="list">
       <div class="input-wrap">
-        <SearchBox @input="search" @clear="handleClear"></SearchBox>
+        <SearchBox @input="search" @clear="handleClear" ref="searchBox" @inputIsNull="handleInputIsNull"></SearchBox>
       </div>
       <div class="hotkey-wrap">
         <h1 class="title">热门搜索</h1>
         <div class="list">
-          <span v-for="item in hotkeys" :key="item._id" class="item">{{item.name}}</span>
+          <span v-for="item in hotKeys" :key="item._id" class="item">{{item.name}}</span>
         </div>
       </div>
       <div v-if="searchHistory.length" class="history-wrap">
@@ -17,14 +17,14 @@
         </div>
         <div v-for="item in searchHistory" :key="item" class="item">
           <i class="iconfont icon-history"/>
-          <span class="text" >{{ item }}</span>
+          <span class="text" @click="changeToDetail(item)">{{ item }}</span>
           <i class="iconfont icon-del" />
         </div>
       </div>
     </ScrollView>
     <div class="result-wrap" v-show="isShow">
       <ScrollView :data="movieList">
-        <Card v-for="movie in movieList" :key="movie._id" :movie="movie" :sort="movie.sort" ></Card>
+        <Card v-for="movie in movieList" :key="movie._id" :movie="movie" @select="getMovie"></Card>
       </ScrollView>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
       list:[],
       movieList:[],
       isShow:false,
-      hotkeys:[],
+      hotKeys:[],
       // searchHistory:[1]
     }
   },
@@ -54,8 +54,21 @@ export default {
     SearchBox
   },
   methods: {
+    handleInputIsNull(bool){
+      this.isShow = bool;
+    },
+    changeToDetail(item){
+      this.$refs.searchBox.setQuery(item);
+      this.search(item);
+    },
+    getMovie(id){
+      this.$router.push(`/movie/${id}`);
+    },
     showConfirm(){},
     search (query) {
+      if(this.timer){
+        clearTimeout(this.timer);
+      }
       const params = {
         keyword:query
       };
@@ -64,30 +77,30 @@ export default {
           // console.log(res);
           if (res.data.code === 1001 ){
             this.movieList = res.data.result.movies;
-            // this.isShow = true;
+            this.isShow = true;
           }
         });
         this.saveSearchHistory(query);
       }, 500);
     },
     handleClear () {
-      // this.
+      this.isShow = false;
     },
     getHotKeys () {
       axios.get('/api/api/movie/get_hot_search').then(res => {
         // console.log(res);
         if(res.data.code === 1001) {
-          this.hotkeys = res.data.result.keywords
+          this.hotKeys = res.data.result.keywords
         }
       })
     },
     ...mapMutations([
-      'saveSearchHistoty'
+      'saveSearchHistory'
     ])
   },
   created() {
     this.getHotKeys();
-  },
+  }
 }
 </script>
 

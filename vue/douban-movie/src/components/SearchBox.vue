@@ -36,7 +36,14 @@ export default {
     setQuery (str) {
       this.query = str
     }
-  }
+  },
+  watch: {
+    query(newVal, oldVal){
+      if(!newVal){
+        this.$emit('inputIsNull', false);
+      }
+    }
+  },
 }
 </script>
 
