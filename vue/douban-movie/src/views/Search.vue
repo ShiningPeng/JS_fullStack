@@ -56,6 +56,7 @@ export default {
   methods: {
     handleInputIsNull(bool){
       this.isShow = bool;
+      this.movieList = [];
     },
     changeToDetail(item){
       this.$refs.searchBox.setQuery(item);
