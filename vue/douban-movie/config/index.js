@@ -10,7 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {//webpack代理
+    proxyTable: {//webpack配置为代理服务器
       '/api':{
         target:'http://47.110.74.37:4000',//后端接口地址    修改配置文件后要重新启动项目
         changeOrigin:true, //允许跨域
