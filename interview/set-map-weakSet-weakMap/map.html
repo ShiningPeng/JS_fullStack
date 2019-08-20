@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p id="p1">s</p>
+  <p id="p2">s</p>
+  <script>
+    
+    const p1 = document.getElementById('p1');
+    const p2 = document.getElementById('p2');
+    var s = Symbol(); //防止命名冲突的, 作为基础数据类型，也可以作为对象的属性
+    var map = {
+      a:1,
+      b:2,
+      '1':3
+    }
+    
+    // Object.prototype.toString.call()  判断类型 任何类型都可以
+    console.log(Object.prototype.toString.call(p1));  
+    // console.log(Object.keys(map));
+
+    var es6Map = new Map();
+    es6Map.set('a', 1);
+    es6Map.set(p1, 'p1');
+    es6Map.set(p2, 'p2');
+    es6Map.set('1', 3);
+    // 保留P1 p2的值
+    console.log(es6Map);
+
+    //优化 if else, switch case判断
+    // 有一一对应的事或一对多的映射 可以用map将 映射存起来
+    // 比较方便的是可以 直接修改映射表 来更改要执行的代码
+    function status(flag) {
+      var doSomething = funMap[flag] || funMap.default;
+      // es6新增的判断数组的方法
+      if(Array.isArray(doSomething)){
+        doSomething.forEach(fun => {
+          fun();
+        })
+      }else{
+        doSomething();
+      }
+      // if(flag === 'a'){
+      //   flagA();
+      //   flagB();
+      // }else if(flag === 'b'){
+      //   flagB();
+      // }else{
+      //   flagC();
+      // }
+    }
+    var funMap = {
+      a:[flagA, flagB],
+      b: flagB,
+      default: flagC
+    }
+
+    // for-of 返回一个可迭代对象 iterator
+    for( let key of es6Map.keys()) {
+      console.log('k');
+    }
+    for(let v of es6Map.values()){}
+    for(let e of es6Map.entries()){}
+
+    var s = new Set([0, 1, 2, 0, 2]);
+    // set 只有value，没有key，遍历没有map那么复杂，只遍历值
+    for(let val of s){
+      
+    }
+  </script>
+</body>
+</html>
