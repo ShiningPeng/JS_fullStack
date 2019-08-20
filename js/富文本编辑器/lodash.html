@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    var arr = [{name: 'lihua', age: 18},{name: 'lilei', age: 17},{name:'hanmei', age: 18}];
+    // 通过arr中age属性进行分组
+    var res = _.groupBy(arr, 'age');
+    // {
+    //   17:[{}],
+    //   18:[{},{}]
+    // }
+    console.log(res);
+    var arr1 = [9.0, 4.5, 4.3, 5];
+    var res1 = _.groupBy(arr1, Math.floor);
+    // {
+    //   9:[],
+    //   4:[],
+    //   5:[]
+    // }
+    console.log(res1);
+
+    function myGroupBy (array, arg) {
+      var obj = {};
+      for(let i = 0;i < array.length;i++){
+        let item = array[i];
+        // arg是字符串
+        let res;
+        if(typeof (arg) === 'string'){
+          res = item[arg];
+        }else{
+          res = arg(item);
+        }
+        if(obj[res] === undefined){
+          obj[res] = [];
+        }
+        obj[res].push(item);
+      }
+      return obj;
+    }
+
+  </script>
+</body>
+
+</html>
