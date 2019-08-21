@@ -33,6 +33,7 @@ const redirect = ctx => {
 
 //先是通过 加载serve的静态资源，没有匹配到之后就到 route 
 app.use(serve(path.join(__dirname, 'a')));
+// app.use(serve(path.join(__dirname, 'assets'))); //如果匹配到assets目录下的文件就显示静态资源，如果没有就通过route跳转到别的页面
 app.use(route.get('/', main));  //返回一个函数
 app.use(route.get('/about', about));
 app.use(route.get('/redirect', redirect));
