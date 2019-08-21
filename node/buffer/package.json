@@ -1,0 +1,15 @@
+{
+  "name": "buffer",
+  "version": "1.0.0",
+  "description": "计算机世界都是二进制的 0 / 1，需要一个规则 把这些二进制对应到不同的字符串。\r utf-8 编码需要发送的字符串，接收方再用 utf-8解码，这样对应才能得到正确的内容\r ## 常见的编码\r - 16进制 hex\r - unicode 编码： 如iconfont库中的unicode 编码\r   国际通用的计算机界字符标准，全世界的语言文字都有一个对应的 unicode。\r   utf-8 就是 unicode 的一种实现\r - base64 编码:  用 64 个字符 来表示一段二进制",
+  "main": "from.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-schedule": "^1.3.2"
+  }
+}
