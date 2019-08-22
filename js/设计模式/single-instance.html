@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // new的过程最后返回的时候 
+    // 先判断构造函数的返回值是不是一个对象，
+    // 是则返回，
+    // 不是则返回新建的那个对象
+    // function TestNew () {
+    //   this.a = 1;
+    //   // return {b: 2};
+    //   return 3;
+    // }
+    // var test = new TestNew();
+    // console.log(test);
+    //
+    var instance;
+    function Modal() {
+      //拦截住return ，让return返回第一个实例
+      if(!instance){
+        instance = this;
+      }
+      return instance;
+    }  
+    Modal.prototype.openModal = function (c) {
+      alert(c);
+    }
+    var a = new Modal();
+    var b = new Modal();
+    console.log(a === b);//false
+    // 而单例模式就是为了让a和b相等，无论new多少次
+    //为的是使他们都指向一个对象，节约内存
+  </script>
+</body>
+</html>

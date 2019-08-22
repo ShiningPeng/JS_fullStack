@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 发布订阅简单实现
+    class Event {
+      constructor() {
+        this._listener = {
+          // price:[func1, func2],
+          // eat:[func1]
+        }
+      }
+      on(key, func) {
+        //将所有的订阅方法存起来，
+        if(this._listener[key] === undefined){
+          this._listener[key] =[];
+        }
+        this._listener[key].push(func)
+      }
+      emit(key) {
+        //将所有订阅方法拿出来执行
+        const funcs = this._listener[key] || [];
+        for (let func of funcs){
+          func();
+        }
+      }
+    }
+    const person = new Event();
+    person.on('eat', function() {
+      console.log('吃饭了');
+    })  
+    person.on('price', function() {
+      console.log('白菜三块，涨价了');
+    })  
+    person.on('price', function() {
+      console.log('大蒜，涨价了');
+    })  
+    person.emit('price');
+  </script>  
+</body>
+</html>

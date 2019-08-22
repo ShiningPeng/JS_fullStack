@@ -1,0 +1,18 @@
+{
+  "name": "design-mode",
+  "version": "1.0.0",
+  "description": "1. 发布订阅\r   addEventListener\r   onclick\r   Event-bus\r     //订阅\r     event.on('click');\r     event.on('receiveData');\r     //发布\r     event.emit('click')\r     发布者发布时所有订阅者都要收到\r 2. 单例模式\r   只存在一个实例，无论new多少次，都是指向同一个实例，为的是节约内存\r   应用场景： 弹窗\r 3. 装饰者模式\r   1. 动态增加功能，无侵入地（不破坏原来代码）\r   目的：增强功能\r   实现流程：\r   1. 先取到原来的方法，\r   2. 重新第一个新的方法，新的方法包含原来的方法，（为了不破坏原来的代码）",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/preset-env": "^7.5.5"
+  }
+}

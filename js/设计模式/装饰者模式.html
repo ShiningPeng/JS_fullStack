@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>装饰者模式</title>
+</head>
+<body>
+  <script>
+
+    //拿到原来的push 方法
+    const originalPush = Array.prototype.push;
+    //增强原来的方法
+    Array.prototype.push = function () {
+      console.log('数组改变了');
+      originalPush.apply(this, arguments);
+    } 
+    const arr = [];
+    arr.push(1);
+
+    let wear = function () {
+      console.log('穿上第一件衣服');
+    }
+    const originalWear = wear;//拿到原来的方法
+    let wear1 = function () {
+      //增强
+      originalWear();
+      console.log('穿上第二件衣服');
+    }
+    wear1();
+  </script>
+</body>
+</html>
