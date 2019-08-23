@@ -9,15 +9,14 @@ import {
   clearSearch
 } from '@/common/js/cache.js'
 
+Vue.use(Vuex)   //这里没有vue实例，所以需要vue.use一下 
+
 const COOKIE_NAME = 'movie_trailer_user'
 const getCookieUser = () => {
   return Cookie.get(COOKIE_NAME)
     ? JSON.parse(Cookie.get(COOKIE_NAME))
     : null
 }
-
-Vue.use(Vuex)   //这里没有vue实例，所以需要vue.use一下
-
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
