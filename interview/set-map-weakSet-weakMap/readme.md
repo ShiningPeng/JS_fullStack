@@ -1,4 +1,4 @@
-##map
+## map
 键值对的总和
 key value
 
@@ -26,7 +26,7 @@ a = null;    // -1
 ```
 垃圾回收器会把引用计数 为 0 的值回收掉
 
-## Map 和 weakMap 区别
+## Map 和 WeakMap 区别
 1. weakMap 只接收对象作为 key (null 除外) 
 2. weakMap 的 key 是弱引用 ，而 value 是正常的，不计入垃圾回收机制，
 并不能确保引用的对象不会被垃圾回收机制回收掉
@@ -53,3 +53,8 @@ a = null;    // -1
     - 大顶堆 根节点的值比子节点大
       小顶堆  根节点的值比子节点小
 
+## Set 和 WeakSet 的区别
+1. WeakSet 只能存放对象
+2. WeakSet 不支持遍历，没有size
+3. WeakSet 存放的对象不会计入到对象的引用计数，因此不会影响gc（js的垃圾回收机制）的回收
+4. WeakSet 存放的对象如果在外界消失了，那么 WeakSet 里面也不会存在，也就是说没有对这个对象的引用了，value也会消失。
